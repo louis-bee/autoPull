@@ -16,7 +16,19 @@ app.use('/consumer', (req, res)=>{
       return res.status(500).send(`执行 git pull 时的错误输出: ${stderr}`);
     }
     console.log(`consumer git pull 执行成功: ${stdout}`);
-    res.send(`git pull 执行成功: ${stdout}`);
+    // res.send(`git pull 执行成功: ${stdout}`);
+    exec(`npm install --prefix ${filepath}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`执行 npm install 时出错: ${error}`);
+        return res.status(500).send(`执行 npm install 时出错: ${error.message}`);
+      }
+      if (stderr) {
+        console.error(`执行 npm install 时的错误输出: ${stderr}`);
+        return res.status(500).send(`执行 npm install 时的错误输出: ${stderr}`);
+      }
+      console.log(`npm install 执行成功: ${stdout}`);
+      res.send(`部署完成！\nGit Pull 输出: ${stdout}\nNPM Install 输出: ${stdout}`);
+    });
   })
 })
 
@@ -32,7 +44,18 @@ app.use('/seller', (req, res)=>{
       return res.status(500).send(`执行 git pull 时的错误输出: ${stderr}`);
     }
     console.log(`seller git pull 执行成功: ${stdout}`);
-    res.send(`git pull 执行成功: ${stdout}`);
+    exec(`npm install --prefix ${filepath}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`执行 npm install 时出错: ${error}`);
+        return res.status(500).send(`执行 npm install 时出错: ${error.message}`);
+      }
+      if (stderr) {
+        console.error(`执行 npm install 时的错误输出: ${stderr}`);
+        return res.status(500).send(`执行 npm install 时的错误输出: ${stderr}`);
+      }
+      console.log(`npm install 执行成功: ${stdout}`);
+      res.send(`部署完成！\nGit Pull 输出: ${stdout}\nNPM Install 输出: ${stdout}`);
+    });
   })
 })
 
@@ -48,7 +71,18 @@ app.use('/admin', (req, res)=>{
       return res.status(500).send(`admin 执行 git pull 时的错误输出: ${stderr}`);
     }
     console.log(`admin git pull 执行成功: ${stdout}`);
-    res.send(`git pull 执行成功: ${stdout}`);
+    exec(`npm install --prefix ${filepath}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`执行 npm install 时出错: ${error}`);
+        return res.status(500).send(`执行 npm install 时出错: ${error.message}`);
+      }
+      if (stderr) {
+        console.error(`执行 npm install 时的错误输出: ${stderr}`);
+        return res.status(500).send(`执行 npm install 时的错误输出: ${stderr}`);
+      }
+      console.log(`npm install 执行成功: ${stdout}`);
+      res.send(`部署完成！\nGit Pull 输出: ${stdout}\nNPM Install 输出: ${stdout}`);
+    });
   })
 })
 
@@ -64,7 +98,18 @@ app.use('/backend', (req, res)=>{
       return res.status(500).send(`执行 git pull 时的错误输出: ${stderr}`);
     }
     console.log(`backend git pull 执行成功: ${stdout}`);
-    res.send(`git pull 执行成功: ${stdout}`);
+    exec(`npm install --prefix ${filepath}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`执行 npm install 时出错: ${error}`);
+        return res.status(500).send(`执行 npm install 时出错: ${error.message}`);
+      }
+      if (stderr) {
+        console.error(`执行 npm install 时的错误输出: ${stderr}`);
+        return res.status(500).send(`执行 npm install 时的错误输出: ${stderr}`);
+      }
+      console.log(`npm install 执行成功: ${stdout}`);
+      res.send(`部署完成！\nGit Pull 输出: ${stdout}\nNPM Install 输出: ${stdout}`);
+    });
   })
 })
 
@@ -80,7 +125,18 @@ app.use('/autoPull', (req, res)=>{
       return res.status(500).send(`执行 git pull 时的错误输出: ${stderr}`);
     }
     console.log(`autoPull git pull 执行成功: ${stdout}`);
-    res.send(`git pull 执行成功: ${stdout}`);
+    exec(`npm install --prefix ${filepath}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`执行 npm install 时出错: ${error}`);
+        return res.status(500).send(`执行 npm install 时出错: ${error.message}`);
+      }
+      if (stderr) {
+        console.error(`执行 npm install 时的错误输出: ${stderr}`);
+        return res.status(500).send(`执行 npm install 时的错误输出: ${stderr}`);
+      }
+      console.log(`npm install 执行成功: ${stdout}`);
+      res.send(`部署完成！\nGit Pull 输出: ${stdout}\nNPM Install 输出: ${stdout}`);
+    });
   })
 })
 
