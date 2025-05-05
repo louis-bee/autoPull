@@ -52,6 +52,22 @@ app.use('/admin', (req, res)=>{
   })
 })
 
+app.use('/backend', (req, res)=>{
+  const filepath = '/var/www/shopping/shopping-backend'
+  exec(`git -C ${filepath} pull`, (error, stdout, stderr)=>{
+    if (error) {
+      console.error(`backend 执行 git pull 时出错: ${error}`);
+      return res.status(500).send(`执行 git pull 时出错: ${error.message}`);
+    }
+    if (stderr) {
+      console.error(`backend 执行 git pull 时的错误输出: ${stderr}`);
+      return res.status(500).send(`执行 git pull 时的错误输出: ${stderr}`);
+    }
+    console.log(`backend git pull 执行成功: ${stdout}`);
+    res.send(`git pull 执行成功: ${stdout}`);
+  })
+})
+
 app.use('/autoPull', (req, res)=>{
   const filepath = '/var/www/shopping/autoPull'
   exec(`git -C ${filepath} pull`, (error, stdout, stderr)=>{
